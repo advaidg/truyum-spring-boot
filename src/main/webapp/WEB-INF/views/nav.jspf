@@ -1,0 +1,20 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<style><%@include file="/WEB-INF/style/styles.css"%></style>
+
+   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body >
+    <header class="header">
+        <h1 class="heading-truYum">truYum</h1>
+        <img src="https://image.flaticon.com/icons/svg/1046/1046857.svg" alt="forandKnife" class="forkImg">
+        <a href="menu-item-list-admin.html" class="menu-button">Menu</a>
+    </header>
