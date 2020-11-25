@@ -2,17 +2,18 @@ package com.cognizant.truyum.model;
 
 import java.util.Date;
 
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class MenuItem {
 	
     private long id;
-  //  @NotBlank(message="Title is required")
+    //@NotBlank(message="Title is required")
     @Size(min=2,max=65,message="Title should have 2 to 65 charecters")
     private String name;
-  //  @NotBlank(message="Price is required")
-    @Pattern(message="Price has to be a number",regexp="[0-9]{}")
+    //@NotBlank(message="Price is required")
+    //@Pattern(message="Price has to be a number")
+    @NotNull
     private float price;
     private boolean active;
   //  @NotBlank(message="Launch Date Required")

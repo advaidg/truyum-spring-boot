@@ -24,11 +24,11 @@ public class CartDaoSqlImpl implements CartDao {
 			
 			Connection connection = ConnectionHandler.getConnection();
 			
-			String query = "INSERT INTO CART(CT_ID, CT_MENU_ID,ct_user_id) VALUES (?, ?,?)";
+			String query = "INSERT INTO CART( CT_MENU_ID,ct_user_id) VALUES (?, ?)";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setLong(1, userId);
-			preparedStatement.setLong(2, menuItemId);
-			preparedStatement.setLong(3, 1);
+			preparedStatement.setLong(1, menuItemId);
+			preparedStatement.setLong(2, userId);
+		
 			if(preparedStatement.executeUpdate() > 0) {
 				System.out.println("Query Successful");
 			}else {

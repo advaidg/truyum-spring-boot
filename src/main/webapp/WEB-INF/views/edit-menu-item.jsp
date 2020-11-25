@@ -1,10 +1,13 @@
 <%@ include file="/WEB-INF/views/nav.jspf"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<div class="body">
+
 	<h2 class="body-text-heading">Edit Menu Item</h2>
+	<br>
+	<br>
+	<div class="row justify-content-md-center" >
 	<form:form method="POST" modelAttribute="menuItem"
-		action="/edit-menu-item">
+		action="/edit-menu-item" class="form-group">
 		<form:hidden path = "id" value="${menuItem.id}"/>
 		<form:label path="name" name="">Name</form:label>
 		<form:input path="name" type="text" />
@@ -34,8 +37,10 @@
 
 	</form:form>
 </div>
-<footer class="footer">
+<div class="footer">
+<footer class="d-flex justify-content-around">
 	<label class="copyright">Copyright © 2020</label>
 </footer>
+</div>
 </body>
 </html>

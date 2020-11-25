@@ -5,6 +5,8 @@
 <html lang="en">
 <head>
 
+		<link href="webjars/bootstrap/4.5.3/css/bootstrap.min.css"
+	    		rel="stylesheet">
 <style><%@include file="/WEB-INF/style/styles.css"%></style>
 
    
@@ -16,5 +18,5 @@
     <header class="header">
         <h1 class="heading-truYum">truYum</h1>
         <img src="https://image.flaticon.com/icons/svg/1046/1046857.svg" alt="forandKnife" class="forkImg">
-        <a href="menu-item-list-admin.html" class="menu-button">Menu</a>
+        <a href="/show-menu-list-admin" class="menu-button">Menu</a>
     </header>

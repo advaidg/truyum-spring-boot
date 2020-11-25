@@ -9,7 +9,7 @@
     <div class="body">
         <h1 class="body-text-heading">Products</h1>
         <div id="menu-item-customer-result">
-        	<table>
+        	<table class="table table-bordered">
         		<tr>
         			<th>Name</th>
         			<th>Free Delivery</th>

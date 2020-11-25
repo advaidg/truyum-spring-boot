@@ -9,7 +9,7 @@
   	</c:if>
         
         <div id="menu-item-customer-result">
-        	<table>
+        	<table class="table table-bordered">
         		<tr>
         			<th>Name</th>
         			<th>Free Delivery</th>
