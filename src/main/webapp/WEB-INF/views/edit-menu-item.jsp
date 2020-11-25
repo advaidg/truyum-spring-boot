@@ -8,9 +8,11 @@
 		<form:hidden path = "id" value="${menuItem.id}"/>
 		<form:label path="name" name="">Name</form:label>
 		<form:input path="name" type="text" />
+		<form:errors path="name" style="color:red;"></form:errors>	
 		<br>
 		<form:label path="price">Price (Rs.)</form:label>
 		<form:input path="price" type="text" />
+		<form:errors path="price" style="color:red;"></form:errors>
 		<br>
 
 
@@ -20,6 +22,7 @@
 				<br>
 		<form:label path="dateOfLaunch">Date Of Launch</form:label>
 		<form:input path="dateOfLaunch" />
+		<form:errors path="dateOfLaunch" style="color:red;"></form:errors>
 		<br>
 		<form:label path="category">Category</form:label>
 		<form:select path="category" items="${categoryList}"></form:select>

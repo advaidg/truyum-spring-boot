@@ -76,9 +76,13 @@ public class MenuItemController {
         return "edit-menu-item";
     }
     @PostMapping("/edit-menu-item")
-    public String editMenuItem(@ModelAttribute MenuItem menuItem, BindingResult bindingResult)
+    public String editMenuItem(@ModelAttribute @Valid MenuItem menuItem, BindingResult bindingResult)
     {	LOGGER.info("Start---- edit menu item" );
     	//System.out.println(menuItem);
+    	if(bindingResult.hasErrors())
+    	{
+    		return "edit-menu-item";
+    	}
     	menuItemService.getMenuItemDao().modifyMenuItem(menuItem);
    
     	LOGGER.info("End --- edit menu Item");
