@@ -40,21 +40,10 @@ public class Cart {
 	}
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Cart other = (Cart) obj;
-		if (menuItemList == null) {
-			if (other.menuItemList != null)
-				return false;
-		} else if (!menuItemList.equals(other.menuItemList))
-			return false;
-		if (Double.doubleToLongBits(total) != Double.doubleToLongBits(other.total))
-			return false;
-		return true;
+		// Replaced if-then-else statement with a single return statement
+		return (this == obj) 
+				|| (obj != null && getClass() == obj.getClass() && ((Cart) obj).menuItemList.equals(menuItemList)
+				&& Double.doubleToLongBits(total) == Double.doubleToLongBits(((Cart) obj).total));
 	}
 	@Override
 	public String toString() {
