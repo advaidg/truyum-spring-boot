@@ -1,7 +1,6 @@
+.java
 package com.cognizant.truyum.service;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,12 +30,9 @@ public class CartService {
 	 * 
 	 * @param userId
 	 * @param menuItemId
-	 * @throws ClassNotFoundException
-	 * @throws IOException
-	 * @throws SQLException
+	 *  // Removed throws declarations as no checked exceptions are thrown in the method body
 	 */
-	public void addCartItem(final long userId, final long menuItemId)
-			throws ClassNotFoundException, IOException, SQLException {
+	public void addCartItem(final long userId, final long menuItemId) {
 
 		cartDao.addCartItem(userId, menuItemId);
 
@@ -46,13 +42,10 @@ public class CartService {
 	 * 
 	 * @param userId
 	 * @param menuItemId
-	 * @throws ClassNotFoundException
-	 * @throws CartEmptyException
-	 * @throws IOException
-	 * @throws SQLException
+	 * // Removed throws declarations as no checked exceptions are thrown in the method body
 	 */
 	public void removeCartItem(final long userId, final long menuItemId)
-			throws ClassNotFoundException, CartEmptyException, IOException, SQLException {
+			throws CartEmptyException { // Kept CartEmptyException as it is a custom exception and might be thrown by the dao layer
 		cartDao.removeCartItem(userId, menuItemId);
 	}
 
@@ -60,13 +53,10 @@ public class CartService {
 	 * 
 	 * @param userid
 	 * @return
-	 * @throws CartEmptyException
-	 * @throws ClassNotFoundException
-	 * @throws IOException
-	 * @throws SQLException
+	 * // Removed throws declarations as no checked exceptions are thrown in the method body
 	 */
 	public List<MenuItem> getAllCartItems(final long userid)
-			throws CartEmptyException, ClassNotFoundException, IOException, SQLException {
+			throws CartEmptyException { // Kept CartEmptyException as it is a custom exception and might be thrown by the dao layer
 
 		return cartDao.getAllCartItems(userid);
 

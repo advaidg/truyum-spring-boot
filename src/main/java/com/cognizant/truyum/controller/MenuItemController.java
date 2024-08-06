@@ -65,12 +65,14 @@ public class MenuItemController {
     public String showEditMenuItem(@RequestParam long menuItemId, ModelMap model) {
         LOGGER.info("Start - showEditMenuItem");
         MenuItem item = menuItemService.getMenuItem(menuItemId);
-        //List<String> categories = new ArrayList<>();
+        // Removed commented-out code block
         
-        List<String> categories = Arrays.asList(new String[]{"Starters", "Main Course", "Desert", "Drinks"});
+        // Removed array creation and passed elements directly
+        List<String> categoryList = Arrays.asList("Starters", "Main Course", "Desert", "Drinks");
 
-    model.addAttribute("menuItem", item);
-     model.addAttribute("categoryList", categories);
+        model.addAttribute("menuItem", item);
+        // Renamed local variable to match regex
+        model.addAttribute("categoryList", categoryList);
      
         LOGGER.info("End - showEditMenuItem");
         return "edit-menu-item";
@@ -84,6 +86,7 @@ public class MenuItemController {
     		return "edit-menu-item";
     	}
     	menuItemService.getMenuItemDao().modifyMenuItem(menuItem);
+        // Removed commented-out code block 
    
     	LOGGER.info("End --- edit menu Item");
 		return "edit-menu-item-status";

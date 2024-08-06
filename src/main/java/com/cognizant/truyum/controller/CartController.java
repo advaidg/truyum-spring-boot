@@ -35,7 +35,9 @@ public class CartController {
 	public String addToCart(@RequestParam int menuItemId, ModelMap model) {
 		LOGGER.info("add-to-cart-Start-addToCart-CartController");
 		try {
-			cartService.addCartItem(1, menuItemId);
+			//Get userId from session - Assuming you have a way to get logged-in user's ID
+			int userId = 1; // Replace 1 with actual userId from session
+			cartService.addCartItem(userId, menuItemId);
 		} catch (ClassNotFoundException | IOException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

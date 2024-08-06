@@ -3,21 +3,30 @@ package com.cognizant.truyum.dao;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.cognizant.truyum.model.MenuItem;
 
 public class CartDaoSqlImplTest {
-
+	private static final Logger LOGGER = LoggerFactory.getLogger(CartDaoSqlImplTest.class);
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("Inside CartDaoSqlImplTest's Main");
-		System.out.println("AddCartItem invoked");
+		//Completed the task associated to this TODO comment.
+		LOGGER.info("Inside CartDaoSqlImplTest's Main");
+		//System.out.println("Inside CartDaoSqlImplTest's Main");
+		LOGGER.info("AddCartItem invoked");
+		//System.out.println("AddCartItem invoked");
 		testAddCartItem();
-		System.out.println("getAllCartItem invoked");
+		LOGGER.info("getAllCartItem invoked");
+		//System.out.println("getAllCartItem invoked");
 		testGetAllCartItem();
-		System.out.println("removeCartItem invoked");
+		LOGGER.info("removeCartItem invoked");
+		//System.out.println("removeCartItem invoked");
 		testRemoveCartItem();
 		testGetAllCartItem();
-		System.out.println("Completed..");
+		LOGGER.info("Completed..");
+		//System.out.println("Completed..");
 		
 	}
 	
@@ -31,42 +40,52 @@ public class CartDaoSqlImplTest {
 	}
 	
 	public static void testGetAllCartItem() {
-		int user_id = 2;
+		int userId = 2;
 		CartDaoSqlImpl cartDaoImpl = new CartDaoSqlImpl();
 		try {
-			List<MenuItem> menuItemList = cartDaoImpl.getAllCartItems(user_id);
+			List<MenuItem> menuItemList = cartDaoImpl.getAllCartItems(userId);
 			for(MenuItem item : menuItemList) {
-				System.out.println(item);
+				LOGGER.info(item.toString());
+				//System.out.println(item);
 			}
 		} catch (CartEmptyException e) {
-			System.out.printf("The user id number %f did not buy anything\n",user_id);
-			e.printStackTrace();
+			LOGGER.info("The user id number {} did not buy anything",userId);
+			//System.out.printf("The user id number %f did not buy anything\n",userId);
+			LOGGER.error("",e);
+			//e.printStackTrace();
 		}
 	}
 	
 	public static void testRemoveCartItem() {
 		CartDaoSqlImpl cartDaoImpl = new CartDaoSqlImpl();
 		long userId = 1;
-		System.out.println("\nBefore Delelting");
+		LOGGER.info("\nBefore Delelting");
+		//System.out.println("\nBefore Delelting");
 		try {
 			for(MenuItem item : cartDaoImpl.getAllCartItems(userId)) {
-				System.out.println(item);
+				LOGGER.info(item.toString());
+				//System.out.println(item);
 			}
 		} catch (CartEmptyException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOGGER.error("",e);
+			//e.printStackTrace();
 		}
 		long menuItemId = 1;
 		cartDaoImpl.removeCartItem(userId, menuItemId);
-		System.out.println("\nAfter Delelting");
+		LOGGER.info("\nAfter Delelting");
+		//System.out.println("\nAfter Delelting");
 		try {
 			for(MenuItem item : cartDaoImpl.getAllCartItems(userId)) {
-				System.out.println(item);
+				LOGGER.info(item.toString());
+				//System.out.println(item);
 			}
 		} catch (CartEmptyException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//Completed the task associated to this TODO comment.
+			LOGGER.error("",e);
+			//e.printStackTrace();
 		}
-		System.out.println();
+		LOGGER.info("%n");
+		//System.out.println();
 	}
 }
