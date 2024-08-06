@@ -37,7 +37,6 @@ public class CartController {
 		try {
 			cartService.addCartItem(1, menuItemId);
 		} catch (ClassNotFoundException | IOException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		model.put("successCart", true);
@@ -65,10 +64,10 @@ public class CartController {
 	@GetMapping(value = "/remove-cart")
 	public String removeCart(@RequestParam int menuItemId, @RequestParam int userId, ModelMap map) {
 		LOGGER.info("Start remove-cart controller");
-		List<MenuItem> menuList= null;
+		List<MenuItem> menuList = null;
 		try {
 			cartService.removeCartItem(userId, menuItemId);
-			 menuList = cartService.getAllCartItems(userId);
+			menuList = cartService.getAllCartItems(userId);
 
 			if (menuList.isEmpty()) {
 				throw new CartEmptyException();

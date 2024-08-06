@@ -1,6 +1,5 @@
 package com.cognizant.truyum.service;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,10 +42,8 @@ public class MenuItemService {
      * {@link MenuItem} in the view of Administrator
      * 
      * @return
-     * @throws SQLException 
-     * @throws ClassNotFoundException 
      */
-    public List<MenuItem> getMenuItemListAdmin() throws ClassNotFoundException, SQLException {
+    public List<MenuItem> getMenuItemListAdmin() {
 
         return menuItemDao.getMenuItemListAdmin();
     }

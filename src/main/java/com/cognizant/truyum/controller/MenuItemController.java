@@ -38,9 +38,9 @@ public class MenuItemController {
     @InitBinder
 	public void initBinder(WebDataBinder binder) {
 		// Date - dd/MM/yyyy
-		SimpleDateFormat Format = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(
-				Format, false));
+				dateFormat, false));
     }
 
     @GetMapping(value = "/show-menu-list-admin")
@@ -65,9 +65,8 @@ public class MenuItemController {
     public String showEditMenuItem(@RequestParam long menuItemId, ModelMap model) {
         LOGGER.info("Start - showEditMenuItem");
         MenuItem item = menuItemService.getMenuItem(menuItemId);
-        //List<String> categories = new ArrayList<>();
         
-        List<String> categories = Arrays.asList(new String[]{"Starters", "Main Course", "Desert", "Drinks"});
+        List<String> categories = Arrays.asList("Starters", "Main Course", "Desert", "Drinks");
 
     model.addAttribute("menuItem", item);
      model.addAttribute("categoryList", categories);
@@ -78,7 +77,7 @@ public class MenuItemController {
     @PostMapping("/edit-menu-item")
     public String editMenuItem(@ModelAttribute @Valid MenuItem menuItem, BindingResult bindingResult)
     {	LOGGER.info("Start---- edit menu item" );
-    	//System.out.println(menuItem);
+    	
     	if(bindingResult.hasErrors())
     	{
     		return "edit-menu-item";

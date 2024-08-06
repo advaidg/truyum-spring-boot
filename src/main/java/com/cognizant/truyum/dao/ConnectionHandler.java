@@ -9,26 +9,27 @@ import java.util.Properties;
 
 public class ConnectionHandler {
 
-    public static Connection connection = null;
+    private static final Connection connection;
     private static Properties props = new Properties();
 
-    public static Connection getConnection() throws SQLException, ClassNotFoundException {
-
-        try {
-            FileInputStream fis = new FileInputStream(
-                    "C:\\Users\\Advaid Gireesan\\Documents\\truyumspringmvc (2)\\truyum-spring-mvc\\src\\main\\resources\\connection.properties");
+    static {
+        Connection conn = null;
+        try (FileInputStream fis = new FileInputStream(
+                "C:\\Users\\Advaid Gireesan\\Documents\\truyumspringmvc (2)\\truyum-spring-mvc\\src\\main\\resources\\connection.properties")) {
             props.load(fis);
-
             Class.forName(props.getProperty("driver"));
-
-            connection = DriverManager.getConnection(props.getProperty("connection-url"), props.getProperty("user"),
+            conn = DriverManager.getConnection(props.getProperty("connection-url"), props.getProperty("user"),
                     props.getProperty("password"));
-        } catch (IOException e) {
+        } catch (IOException | ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
+        connection = conn;
+    }
 
+    private ConnectionHandler() {
+    }
+
+    public static Connection getConnection() {
         return connection;
     }
 }
-//location	C:\Users\877973\Desktop\Works\GitHub\truyum\casestudy\truYum\src\com\cognizant\truyum\dao\ConnectionHandler.java
-//location	C:\Users\877973\Desktop\Works\GitHub\truyum\casestudy\truYum\src\connection.properties

@@ -1,7 +1,5 @@
 package com.cognizant.truyum.service;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,12 +29,8 @@ public class CartService {
 	 * 
 	 * @param userId
 	 * @param menuItemId
-	 * @throws ClassNotFoundException
-	 * @throws IOException
-	 * @throws SQLException
 	 */
-	public void addCartItem(final long userId, final long menuItemId)
-			throws ClassNotFoundException, IOException, SQLException {
+	public void addCartItem(final long userId, final long menuItemId) {
 
 		cartDao.addCartItem(userId, menuItemId);
 
@@ -46,13 +40,9 @@ public class CartService {
 	 * 
 	 * @param userId
 	 * @param menuItemId
-	 * @throws ClassNotFoundException
 	 * @throws CartEmptyException
-	 * @throws IOException
-	 * @throws SQLException
 	 */
-	public void removeCartItem(final long userId, final long menuItemId)
-			throws ClassNotFoundException, CartEmptyException, IOException, SQLException {
+	public void removeCartItem(final long userId, final long menuItemId) throws CartEmptyException {
 		cartDao.removeCartItem(userId, menuItemId);
 	}
 
@@ -61,12 +51,8 @@ public class CartService {
 	 * @param userid
 	 * @return
 	 * @throws CartEmptyException
-	 * @throws ClassNotFoundException
-	 * @throws IOException
-	 * @throws SQLException
 	 */
-	public List<MenuItem> getAllCartItems(final long userid)
-			throws CartEmptyException, ClassNotFoundException, IOException, SQLException {
+	public List<MenuItem> getAllCartItems(final long userid) throws CartEmptyException {
 
 		return cartDao.getAllCartItems(userid);
 

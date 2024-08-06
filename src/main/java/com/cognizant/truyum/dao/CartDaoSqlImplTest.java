@@ -3,21 +3,23 @@ package com.cognizant.truyum.dao;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.cognizant.truyum.model.MenuItem;
 
 public class CartDaoSqlImplTest {
-
+	private static final Logger LOGGER = LoggerFactory.getLogger(CartDaoSqlImplTest.class);
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("Inside CartDaoSqlImplTest's Main");
-		System.out.println("AddCartItem invoked");
+		LOGGER.info("Inside CartDaoSqlImplTest's Main");
+		LOGGER.info("AddCartItem invoked");
 		testAddCartItem();
-		System.out.println("getAllCartItem invoked");
+		LOGGER.info("getAllCartItem invoked");
 		testGetAllCartItem();
-		System.out.println("removeCartItem invoked");
+		LOGGER.info("removeCartItem invoked");
 		testRemoveCartItem();
 		testGetAllCartItem();
-		System.out.println("Completed..");
+		LOGGER.info("Completed..");
 		
 	}
 	
@@ -31,42 +33,39 @@ public class CartDaoSqlImplTest {
 	}
 	
 	public static void testGetAllCartItem() {
-		int user_id = 2;
+		int userId = 2;
 		CartDaoSqlImpl cartDaoImpl = new CartDaoSqlImpl();
 		try {
-			List<MenuItem> menuItemList = cartDaoImpl.getAllCartItems(user_id);
+			List<MenuItem> menuItemList = cartDaoImpl.getAllCartItems(userId);
 			for(MenuItem item : menuItemList) {
-				System.out.println(item);
+				LOGGER.info("{}",item);
 			}
 		} catch (CartEmptyException e) {
-			System.out.printf("The user id number %f did not buy anything\n",user_id);
-			e.printStackTrace();
+			LOGGER.info(String.format("The user id number %d did not buy anything%n",userId),e);
 		}
 	}
 	
 	public static void testRemoveCartItem() {
 		CartDaoSqlImpl cartDaoImpl = new CartDaoSqlImpl();
 		long userId = 1;
-		System.out.println("\nBefore Delelting");
+		LOGGER.info("\nBefore Delelting");
 		try {
 			for(MenuItem item : cartDaoImpl.getAllCartItems(userId)) {
-				System.out.println(item);
+				LOGGER.info("{}",item);
 			}
 		} catch (CartEmptyException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOGGER.info("Cart is Empty",e);
 		}
 		long menuItemId = 1;
 		cartDaoImpl.removeCartItem(userId, menuItemId);
-		System.out.println("\nAfter Delelting");
+		LOGGER.info("\nAfter Delelting");
 		try {
 			for(MenuItem item : cartDaoImpl.getAllCartItems(userId)) {
-				System.out.println(item);
+				LOGGER.info("{}",item);
 			}
 		} catch (CartEmptyException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOGGER.info("Cart is Empty",e);
 		}
-		System.out.println();
+		LOGGER.info(System.lineSeparator());
 	}
 }
